@@ -34,14 +34,11 @@ hr {
     font-size: 25px
 }
 
-.icons .fa-heart {
-    color: red
-}
+/* .icons .fa-heart {
+    color: white
+} */
 
-.icons .fa-smile-o {
-    color: yellow;
-    font-size: 29px
-}
+
 
 .rounded-image {
     border-radius: 50% !important;

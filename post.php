@@ -40,9 +40,9 @@ if (isset($_POST['commentButton'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css">
-
+    <link rel="stylesheet" href="css/all.min.css">
 
     <title>Post</title>
 </head>
@@ -69,9 +69,28 @@ if (isset($_POST['commentButton'])) {
                         $sqlComment = "select comment.comment, user.username from comment join user where comment.userid=user.userid && comment.postid= '$postID'";
                         $resultComment = mysqli_query($conn, $sqlComment);
                         $countComment = $resultComment->num_rows;
+                        
+                        $userid = $_SESSION['user_id'];
+                        $sqlLike = "select *from likedpost where userid = '$userid' && postid = '$postID'";
+                        $resultLike = mysqli_query($conn,$sqlLike);
+                        $countLike = $resultLike->num_rows;
                         ?>
                         <div class="d-flex justify-content-between align-items-center" style="margin-top: 5px;">
-                            <div class="d-flex flex-row icons d-flex align-items-center"> <i class="fa fa-heart"></i> <i class="fa fa-smile-o ml-2"></i> </div>
+                            <div class="d-flex flex-row icons d-flex align-items-center"> 
+                            <?php
+                                            if($countLike>0)
+                                            {
+                                                ?>
+                                                    <i class="fa fa-heart like_btn" title="<?php echo $postID ?>" ></i>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                    <i class="far fa-heart like_btn" title="<?php echo $postID ?>" ></i>
+                                                <?php
+                                            }
+                                        ?>
+                                         
+                                        <span style="margin-left: 5px;" id='likesCount'><?php echo $countLike ?></span><span>likes</span> </div>
                             <div class="d-flex flex-row muted-color"> <span style="margin-right: 10px;"><?php echo $countComment ?> comments</span> </div>
 
                         </div>
@@ -114,6 +133,30 @@ if (isset($_POST['commentButton'])) {
             </div>
         </div>
     </div>
+    <script>
+    $(".like_btn").click(function(){
+        
+        var post_id = $(this).attr("title");
+        if($(this).hasClass("far"))
+        {
+            $(this).removeClass("far");
+            $(this).addClass("fa");
+           // var res = Number($("#likesCount").text()) + 1; 
+            //$("#likesCount").html(res);
+           
+           
+        }
+        else{
+            $(this).removeClass("fa");
+            $(this).addClass("far");
+            
+        }
+        $.post("likeUnlike.php",{data:post_id,check:'1'});
+        
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
 
 </html>

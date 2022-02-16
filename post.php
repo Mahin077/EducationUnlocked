@@ -1,6 +1,6 @@
 <?php
 include 'connect.php';
-session_start();
+include 'nav.php';
 $postID = $_GET['_postid'];
 
 $sqlShowPost = "select post.postid,user.username,post.text,post.category,post.created_at from post join user where post.userid=user.userid && post.postid = '$postID' ";
@@ -57,7 +57,7 @@ if (isset($_POST['commentButton'])) {
                         <div class="d-flex flex-row align-items-center"> <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/61a32d90-92bd-48ba-be28-a459f5efac0c/d990c1a-6f6ce22e-6234-479e-a181-014cfc5f1019.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYxYTMyZDkwLTkyYmQtNDhiYS1iZTI4LWE0NTlmNWVmYWMwY1wvZDk5MGMxYS02ZjZjZTIyZS02MjM0LTQ3OWUtYTE4MS0wMTRjZmM1ZjEwMTkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-YSXnvPiMVc0Zpb4RIXK2kTKiaxnA6oyOLhu0zGe_34" width="50" class="rounded-circle">
                             <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> <span class="font-weight-bold"><b><?php echo $rowPost['username'] ?></b></span><small class="text-primary"><?php echo $rowPost['category'] ?></small> </div>
                         </div>
-                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $rowPost['created_at'] ?></small> <i class="fa fa-ellipsis-h"></i> </div>
+                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $rowPost['created_at'] ?></small>  </div>
                     </div>
                     <div class="p-2">
                         <!-- post main text -->
@@ -70,14 +70,23 @@ if (isset($_POST['commentButton'])) {
                         $resultComment = mysqli_query($conn, $sqlComment);
                         $countComment = $resultComment->num_rows;
                         
-                        $userid = $_SESSION['user_id'];
-                        $sqlLike = "select *from likedpost where userid = '$userid' && postid = '$postID'";
-                        $resultLike = mysqli_query($conn,$sqlLike);
-                        $countLike = $resultLike->num_rows;
+                        $sqlTotalLike = "select *from likedpost where postid = '$postID'";
+                        $resultTotalLike = mysqli_query($conn,$sqlTotalLike);
+                        $countTotalLike = $resultTotalLike->num_rows;
+        
+                        if (isset($_SESSION['user_id'])) {
+                            $userid = $_SESSION['user_id'];
+                            $sqlLike = "select *from likedpost where userid = '$userid' && postid = '$postID'";
+                            $resultLike = mysqli_query($conn,$sqlLike);
+                            $countLike = $resultLike->num_rows;
+                        } 
+                        
                         ?>
                         <div class="d-flex justify-content-between align-items-center" style="margin-top: 5px;">
                             <div class="d-flex flex-row icons d-flex align-items-center"> 
-                            <?php
+                                        <?php
+                                        if(isset($_SESSION['user_id']))
+                                        {
                                             if($countLike>0)
                                             {
                                                 ?>
@@ -88,9 +97,14 @@ if (isset($_POST['commentButton'])) {
                                                     <i class="far fa-heart like_btn" title="<?php echo $postID ?>" ></i>
                                                 <?php
                                             }
+                                        }else{
+                                            ?>
+                                               <i class="far fa-heart" title="" ></i> 
+                                            <?php
+                                        }    
                                         ?>
                                          
-                                        <span style="margin-left: 5px;" id='likesCount'><?php echo $countLike ?></span><span>likes</span> </div>
+                                        <span style="margin-left: 5px;" id='likesCount'><?php echo $countTotalLike ?></span><span>likes</span> </div>
                             <div class="d-flex flex-row muted-color"> <span style="margin-right: 10px;"><?php echo $countComment ?> comments</span> </div>
 
                         </div>

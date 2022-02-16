@@ -1,7 +1,7 @@
 <?php
-session_start();
-include 'connect.php';
 
+include 'connect.php';
+include 'nav.php';
 // create a post
 if (isset($_POST['submitPost'])) {
     if (isset($_SESSION['user_id'])) {
@@ -36,7 +36,18 @@ if (isset($_POST['submitPost'])) {
 $sqlShowPost = "select post.postid,user.username,post.text,post.category,post.created_at from post join user where post.userid=user.userid order by post.postid desc";
 $resultShowPost = mysqli_query($conn, $sqlShowPost);
 
-
+if (isset($_GET['catShow'])) {
+    $cat = $_GET['catShow'];
+    if($cat=="all")
+    {
+        $sqlShowPost = "select post.postid,user.username,post.text,post.category,post.created_at from post join user where post.userid=user.userid order by post.postid desc";
+        $resultShowPost = mysqli_query($conn, $sqlShowPost); 
+    }
+    else{
+        $sqlShowPost = "select post.postid,user.username,post.text,post.category,post.created_at from post join user where post.userid=user.userid && post.category= '$cat' order by post.postid desc";
+        $resultShowPost = mysqli_query($conn, $sqlShowPost);
+    }
+}
 
 
 
@@ -60,8 +71,37 @@ $resultShowPost = mysqli_query($conn, $sqlShowPost);
 </head>
 
 <body>
+
+    <!-- search option -->
+    <div class="container" style="margin-top:10px;">
+        <div class="card">
+            <div class="row ">
+                <form action="" method="GET">
+
+                    <label style="margin-left:17px;">Select Category</label>
+
+                    <select name="catShow" style="margin-left:11px;width:201px">
+                        <option value="" disabled selected>Choose option</option>
+                        <option value="all">Show all</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Biology">Biology</option>
+                        <option value="Math">Math</option>
+                        <option value="Others">Others</option>
+                    </select>
+
+
+                    <button name="submitCat" value="category" class="btn btn-light">Search</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <hr>
+    </div>
     <!-- create a post -->
-    <div class="container" style="margin-top: 10px;">
+    <div class="container" style="margin-top: 20px;">
         <div class="card">
             <h5 class="card-header">Create a Post</h5>
             <div class="card-body">
@@ -88,11 +128,11 @@ $resultShowPost = mysqli_query($conn, $sqlShowPost);
                             <label>Select Category</label>
                             <select name="postCategory">
                                 <option value="" disabled selected>Choose option</option>
-                                <option value="Apple">Apple</option>
-                                <option value="Banana">Banana</option>
-                                <option value="Coconut">Coconut</option>
-                                <option value="Blueberry">Blueberry</option>
-                                <option value="Strawberry">Strawberry</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Math">Math</option>
+                                <option value="Others">Others</option>
                             </select>
                         </div>
                         <div class="row">
@@ -110,18 +150,30 @@ $resultShowPost = mysqli_query($conn, $sqlShowPost);
             </div>
         </div>
     </div>
+    
+
+
 
     <!-- post template -->
     <?php
     while ($rowPost = mysqli_fetch_array($resultShowPost)) {
-        $userid = $_SESSION['user_id'];
+
         $postID = $rowPost['postid'];
         $sqlComment = "select *from comment where postid = '$postID' ";
         $resultComment = mysqli_query($conn, $sqlComment);
         $countComment = $resultComment->num_rows;
-        $sqlLike = "select *from likedpost where userid = '$userid' && postid = '$postID'";
-        $resultLike = mysqli_query($conn,$sqlLike);
-        $countLike = $resultLike->num_rows;
+
+        $sqlTotalLike = "select *from likedpost where postid = '$postID'";
+        $resultTotalLike = mysqli_query($conn, $sqlTotalLike);
+        $countTotalLike = $resultTotalLike->num_rows;
+
+        if (isset($_SESSION['user_id'])) {
+            $userid = $_SESSION['user_id'];
+            $sqlLike = "select *from likedpost where userid = '$userid' && postid = '$postID'";
+            $resultLike = mysqli_query($conn, $sqlLike);
+            $countLike = $resultLike->num_rows;
+        }
+
     ?>
         <div class="container mt-5 mb-5">
             <div class="row d-flex align-items-center justify-content-center">
@@ -142,21 +194,27 @@ $resultShowPost = mysqli_query($conn, $sqlShowPost);
                             <form action="post.php" method="GET">
 
                                 <div class="d-flex justify-content-between align-items-center" style="margin-top: 5px;">
-                                    <div class="d-flex flex-row icons d-flex align-items-center"> 
+                                    <div class="d-flex flex-row icons d-flex align-items-center">
                                         <?php
-                                            if($countLike>0)
-                                            {
-                                                ?>
-                                                    <i class="fa fa-heart like_btn" title="<?php echo $postID ?>" ></i>
-                                                <?php
-                                            }else{
-                                                ?>
-                                                    <i class="far fa-heart like_btn" title="<?php echo $postID ?>" ></i>
-                                                <?php
-                                            }
+                                        if (isset($_SESSION['user_id'])) {
+                                            if ($countLike > 0) {
                                         ?>
-                                         
-                                        <span style="margin-left: 5px;" id='likesCount'><?php echo $countLike ?></span><span>likes</span> </div>
+                                                <i class="fa fa-heart like_btn" title="<?php echo $postID ?>"></i>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <i class="far fa-heart like_btn" title="<?php echo $postID ?>"></i>
+                                            <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <i class="far fa-heart" title=""></i>
+                                        <?php
+                                        }
+                                        ?>
+
+                                        <span style="margin-left: 5px;" id='likesCount'><?php echo $countTotalLike ?></span><span>likes</span>
+                                    </div>
                                     <div class="d-flex flex-row muted-color"> <span style="margin-right: 10px;"><?php echo $countComment ?> comments</span><span><button name="postOpen">show post</button></span> </div>
                                     <input type="hidden" name="_postid" value="<?php echo $rowPost['postid'] ?>">
                                 </div>
@@ -173,28 +231,29 @@ $resultShowPost = mysqli_query($conn, $sqlShowPost);
     ?>
 
 
-<script>
-    $(".like_btn").click(function(){
-        
-        var post_id = $(this).attr("title");
-        if($(this).hasClass("far"))
-        {
-            $(this).removeClass("far");
-            $(this).addClass("fa");
-           // var res = Number($("#likesCount").text()) + 1; 
-            //$("#likesCount").html(res);
-           
-           
-        }
-        else{
-            $(this).removeClass("fa");
-            $(this).addClass("far");
-            
-        }
-        $.post("likeUnlike.php",{data:post_id,check:'1'});
-        
-    });
-</script>
+    <script>
+        $(".like_btn").click(function() {
+
+            var post_id = $(this).attr("title");
+            if ($(this).hasClass("far")) {
+                $(this).removeClass("far");
+                $(this).addClass("fa");
+                // var res = Number($("#likesCount").text()) + 1; 
+                //$("#likesCount").html(res);
+
+
+            } else {
+                $(this).removeClass("fa");
+                $(this).addClass("far");
+
+            }
+            $.post("likeUnlike.php", {
+                data: post_id,
+                check: '1'
+            });
+
+        });
+    </script>
 
 
 

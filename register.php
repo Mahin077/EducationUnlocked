@@ -1,8 +1,12 @@
 <?php
 include 'connect.php';
-
+include 'nav.php';
 ?>
 <?php
+if(isset($_SESSION['user_id']))
+{
+	header("Location:profile.php");
+}
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -16,7 +20,7 @@ if (isset($_POST['submit'])) {
         $sql = "insert into user (username,email,password,created_at) values('$username','$email','$password','$time')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            echo "<script>alert('Register completed. Please Log in')</script";
+            echo "<script>alert('Register completed. Please Log in')</script>";
         } else {
             echo "<script>alert('something wrong')</script";
         }

@@ -1,8 +1,12 @@
 <?php
 
 include 'connect.php';
-session_start();
+include 'nav.php';
 
+if(isset($_SESSION['user_id']))
+{
+	header("Location:profile.php");
+}
 if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
@@ -15,6 +19,7 @@ if (isset($_POST['submit'])) {
 		$row = mysqli_fetch_array($result);
 		$_SESSION['user_id'] = $row['userid'];
 		$_SESSION['user_email'] = $row['email'];
+		$_SESSION['user_name'] = $row['username'];
 		
 		if ($result->num_rows > 0) {
 

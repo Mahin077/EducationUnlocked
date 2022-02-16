@@ -48,7 +48,7 @@ session_start();
           <a class="nav-link" href="#">Team</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About us</a>
+          <a class="nav-link" href="About.php">About us</a>
         </li>
         <?php
         if (isset($_SESSION['user_id']))

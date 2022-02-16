@@ -61,7 +61,7 @@ if (isset($_POST['commentButton'])) {
                     </div>
                     <div class="p-2">
                         <!-- post main text -->
-                        <p class="text-justify" style="margin-left: 12px;"><?php echo $rowPost['text'] ?></p>
+                        <p class="text-justify" style="margin-left: 12px;white-space: pre-line;"><?php echo $rowPost['text'] ?></p>
                         <hr>
                         <!-- show total comments in the post, button to show all the comments and hide the comments -->
                         <?php
@@ -118,7 +118,7 @@ if (isset($_POST['commentButton'])) {
                             while ($rowComment = mysqli_fetch_array($resultComment)) {
                             ?>
                                 <div class="d-flex flex-row mb-2"> <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/61a32d90-92bd-48ba-be28-a459f5efac0c/d990c1a-6f6ce22e-6234-479e-a181-014cfc5f1019.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYxYTMyZDkwLTkyYmQtNDhiYS1iZTI4LWE0NTlmNWVmYWMwY1wvZDk5MGMxYS02ZjZjZTIyZS02MjM0LTQ3OWUtYTE4MS0wMTRjZmM1ZjEwMTkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-YSXnvPiMVc0Zpb4RIXK2kTKiaxnA6oyOLhu0zGe_34" width="40" class="rounded-image">
-                                    <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> <span class="name"><?php echo $rowComment['username'] ?></span> <small class="comment-text"><?php echo $rowComment['comment'] ?></small>
+                                    <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> <span class="name"><?php echo $rowComment['username'] ?></span> <small class="comment-text" style="white-space: pre-line;"><?php echo $rowComment['comment'] ?></small>
                                     </div>
                                 </div>
                             <?php
@@ -133,7 +133,7 @@ if (isset($_POST['commentButton'])) {
                             <div class="comment-input" style="margin-top: 10px;">
                                 <div class="row">
                                     <div class="col-11">
-                                        <input type="text" name="commentText" class="form-control">
+                                        <textarea name="commentText" class="form-control" style="height: 38px;"></textarea>
                                     </div>
                                     <div class="col-1">
                                         <button type="submit" class="btn btn-primary" name="commentButton">send</button>

@@ -188,7 +188,7 @@ if (isset($_GET['catShow'])) {
                         </div>
                         <div class="p-2">
                             <!-- post main text -->
-                            <p class="text-justify" style="margin-left: 12px;"><?php echo $rowPost['text'] ?></p>
+                            <p class="text-justify" style="margin-left: 12px;white-space: pre-line;"><?php echo $rowPost['text'] ?></p>
                             <hr>
                             <!-- show total comments in the post -->
                             <form action="post.php" method="GET">

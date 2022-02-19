@@ -1,6 +1,7 @@
 <?php
     include 'connect.php';
-    include 'nav.php';
+	session_start();
+    
     if ($_SESSION['user_name'] != 'admin') 
    {
        echo "<script>alert('You don't have permission to use this page');location.href='index.php';</script>";

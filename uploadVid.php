@@ -35,7 +35,7 @@
 	</style>
 </head>
 <body>
-	<a href="view.php">Videos</a>
+	
 	<?php if (isset($_GET['error'])) {  ?>
 		<p><?=$_GET['error']?></p>
 	<?php } ?>

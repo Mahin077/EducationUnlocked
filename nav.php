@@ -48,7 +48,7 @@ session_start();
         </li>
         <li class="nav-item">
         <button type="button" class="btn btn-outline-danger me-3">
-          <a class="nav-link text-white" href="">Team</a>
+          <a class="nav-link text-white" href="TeamPage.php">Team</a>
       </button>
         </li>
         <li class="nav-item">

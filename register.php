@@ -13,11 +13,14 @@ if (isset($_POST['submit'])) {
     $password = md5($_POST['password']);
     date_default_timezone_set("Asia/Dhaka");
     $time = date("d/m/y")." ".date("h:i:sa");
-
+    $age = $_POST['age'];
+    $school = $_POST['school'];
+    if (!empty($_POST['gen'])) {
+    $gender = $_POST['gen'];
     $sql = "select *from user where email='$email'";
     $result = mysqli_query($conn, $sql);
     if (!$result->num_rows > 0) {
-        $sql = "insert into user (username,email,password,created_at) values('$username','$email','$password','$time')";
+        $sql = "insert into user (username,email,password,created_at,age,school,gender) values('$username','$email','$password','$time','$age','$school','$gender')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             echo "<script>alert('Register completed. Please Log in')</script>";
@@ -27,6 +30,10 @@ if (isset($_POST['submit'])) {
     } else {
         echo "<script>alert('Email already exist. Please login with your email id and password');location.href='login.php';</script";
     }
+    }else{
+        echo "<script>alert('select gender')</script>";
+    }
+    
 }
 ?>
 
@@ -46,7 +53,7 @@ if (isset($_POST['submit'])) {
 
 <body style="background-image: url(images/bg1.jpg);">
     <!-- Register Section -->
-    <div class="container" style="width: 450px;text-align: center;margin-top:120px;margin-bottom:120px;height:570px;background-color:white;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);border-radius:5px;">
+    <div class="container" style="width: 450px;text-align: center;margin-top:120px;margin-bottom:120px;height:670px;background-color:white;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);border-radius:5px;">
         <!-- Register Card Section -->
         <div class="card">
             <form action="" method="POST" class="">
@@ -56,7 +63,7 @@ if (isset($_POST['submit'])) {
                     <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="text" placeholder="Username" name="username" value="" required>
                 </div>
                 <div class="input-group" style="margin-bottom: 40px;">
-                    <label style="margin-right: 118px;margin-left:20px;font-size:20px;font-weight:bold;">Email</label>
+                    <label style="margin-right: 125px;margin-left:20px;font-size:20px;font-weight:bold;">Email</label>
                     <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="email" placeholder="Email" name="email" value="" required>
                 </div>
                 
@@ -64,6 +71,23 @@ if (isset($_POST['submit'])) {
                     <label style="margin-right: 81px;margin-left:20px;font-size:20px;font-weight:bold;">Password</label>
                     <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="password" placeholder="Password" name="password" value="" required>
                 </div>
+                <div class="input-group" style="margin-bottom: 40px;">
+                    <label style="margin-right: 144px;margin-left:20px;font-size:20px;font-weight:bold;">Age</label>
+                    <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="number" placeholder="Age" name="age" value="" required>
+                </div>
+                <div class="input-group" style="margin-bottom: 40px;">
+                    <label style="margin-right: 37px;margin-left:20px;font-size:20px;font-weight:bold;">School Name:</label>
+                    <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="text" placeholder="School name" name="school" value="" required>
+                </div>
+                <div class="input-group" style="margin-bottom: 40px;">
+                <label for="gender"> <label style="margin-right: 108px;margin-left:20px;font-size:20px;font-weight:bold;">Gender</label></label>
+                    <select name="gen">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    
+                    </select>
+                </div>
+                
                 <div class="input-group d-flex justify-content-center" style="margin-top: 55px;">
                     <button name="submit" class="btn btn-success btn-lg" style="width: 400px;">Register</button>
                 </div>

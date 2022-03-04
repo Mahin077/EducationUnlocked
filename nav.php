@@ -25,6 +25,7 @@ session_start();
     <div>
       <ul id="navbar">
         <li onclick="active()"><a class="navItem" href="index.php">Home</a></li>
+        <li><a class="navItem" href="allPost.php">Post</a></li>
         <li><a class="navItem" href="card.php">Courses</a></li>
         <li><a class="navItem" href="">Live</a></li>
         <li><a class="navItem" href="contactUs.php">Contact Us</a></li>
@@ -41,6 +42,15 @@ session_start();
           </a>
         </li>
         <?php
+          if($_SESSION['user_name'] != 'admin'){
+            ?>
+            <li><a class="navItem" href="donate.php">Donate</a></li>
+          <?php
+          }else{
+            ?>
+            <li><a class="navItem" href="adminDonate.php">Donated</a></li>
+          <?php
+          }
             }
             else{
         ?>

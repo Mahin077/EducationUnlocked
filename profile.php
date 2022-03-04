@@ -158,19 +158,24 @@ $showPost = 0;
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <form action="recentPost.php" method="POST">
                     <button class="btn btn-success btn-lg btn-block">Show all Post</button>
                 </form>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <form action="recentComments.php" method="POST">
                     <button class="btn btn-success btn-lg btn-block">show all comments</button>
                 </form>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <form action="recentLikes.php" method="POST">
                     <button class="btn btn-success btn-lg btn-block">Show all likes</button>
+                </form>
+            </div>
+            <div class="col-3">
+                <form action="recentDonations.php" method="POST">
+                    <button class="btn btn-success btn-lg btn-block">Show all donations</button>
                 </form>
             </div>
         </div>

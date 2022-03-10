@@ -14,8 +14,9 @@ if (isset($_POST['commentButton'])) {
         if (!empty($_POST['commentText'])) {
             $comment = $_POST['commentText'];
             $userid = $_SESSION['user_id'];
-
-            $sqlCommentPost = "insert into comment(userid,postid,comment) values('$userid','$postID','$comment')";
+            date_default_timezone_set("Asia/Dhaka");
+            $time = date("d/m/y") . " " . date("h:i:sa");
+            $sqlCommentPost = "insert into comment(userid,postid,comment,date) values('$userid','$postID','$comment','$time')";
             $resultCommentPost = mysqli_query($conn, $sqlCommentPost);
             if ($resultCommentPost) {
                 echo "<script>alert('Comment added successfully.')</script>";
@@ -66,7 +67,7 @@ if (isset($_POST['commentButton'])) {
                         <!-- show total comments in the post, button to show all the comments and hide the comments -->
                         <?php
 
-                        $sqlComment = "select comment.comment, user.username from comment join user where comment.userid=user.userid && comment.postid= '$postID'";
+                        $sqlComment = "select comment.comment,comment.date,user.username from comment join user where comment.userid=user.userid && comment.postid= '$postID'";
                         $resultComment = mysqli_query($conn, $sqlComment);
                         $countComment = $resultComment->num_rows;
                         
@@ -119,7 +120,9 @@ if (isset($_POST['commentButton'])) {
                             ?>
                                 <div class="d-flex flex-row mb-2"> <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/61a32d90-92bd-48ba-be28-a459f5efac0c/d990c1a-6f6ce22e-6234-479e-a181-014cfc5f1019.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYxYTMyZDkwLTkyYmQtNDhiYS1iZTI4LWE0NTlmNWVmYWMwY1wvZDk5MGMxYS02ZjZjZTIyZS02MjM0LTQ3OWUtYTE4MS0wMTRjZmM1ZjEwMTkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-YSXnvPiMVc0Zpb4RIXK2kTKiaxnA6oyOLhu0zGe_34" width="40" class="rounded-image">
                                     <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> <span class="name"><?php echo $rowComment['username'] ?></span> <small class="comment-text" style="white-space: pre-line;"><?php echo $rowComment['comment'] ?></small>
-                                    </div>
+                                    
+                                </div>
+                                <div class="d-flex flex-row mt-1 ellipsis justify-content-end"> <small class="mr-2"><?php echo $rowComment['date'] ?></small>  </div> 
                                 </div>
                             <?php
 
@@ -155,8 +158,7 @@ if (isset($_POST['commentButton'])) {
         {
             $(this).removeClass("far");
             $(this).addClass("fa");
-           // var res = Number($("#likesCount").text()) + 1; 
-            //$("#likesCount").html(res);
+           
            
            
         }

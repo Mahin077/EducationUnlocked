@@ -56,13 +56,7 @@
             while ($video = mysqli_fetch_assoc($res)) {
         ?>
 
-               <!-- <video src="uploads/<?= $video['video_url'] ?>" controls>
 
-                </video> -->
-
-                <video  controls="controls" 
-
-                source src="uploads/<?= $video['video_url'] ?>"  type="video/mp4">
                 </video>
 
         <?php

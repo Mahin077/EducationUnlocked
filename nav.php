@@ -19,6 +19,7 @@ session_start();
 <body>
   <section id="header">
     <a style="text-decoration: none;" href="index.php">
+    <i class="fa-solid fa-graduation-cap"></i>
       <h5>Education Unlocked</h5>
     </a>
     <div>
@@ -27,7 +28,7 @@ session_start();
         <li><a class="navItem" href="allPost.php">Post</a></li>
         <li><a class="navItem" href="card.php">Courses</a></li>
         <li><a class="navItem" href="">Live</a></li>
-        <li><a class="navItem" href="">Contact Us</a></li>
+        <li><a class="navItem" href="contactUs.php">Contact Us</a></li>
         <li><a class="navItem" href="TeamPage.php">Team</a></li>
         <li><a class="navItem" href="About.php">About Us</a></li>
 

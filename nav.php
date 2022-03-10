@@ -27,7 +27,7 @@ session_start();
         <li onclick="active()"><a class="navItem" href="index.php">Home</a></li>
         <li><a class="navItem" href="allPost.php">Post</a></li>
         <li><a class="navItem" href="card.php">Courses</a></li>
-        <li><a class="navItem" href="">Live</a></li>
+        <li><a class="navItem" href="live.php">Live</a></li>
         <li><a class="navItem" href="contactUs.php">Contact Us</a></li>
         <li><a class="navItem" href="TeamPage.php">Team</a></li>
         <li><a class="navItem" href="About.php">About Us</a></li>

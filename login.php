@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 
 <body style="background-image: url(images/bg1.jpg);">
 	<div class="container" style="width: 450px;text-align: center;margin-top:170px;margin-bottom:170px;height:470px;background-color:white;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);border-radius:5px;">
-		<div class="card">
+		<div class="">
 			<form action="" method="POST" class="login-email">
 				<p class="login-text" style="font-size: 2rem; font-weight: 800;margin-top:20px;margin-bottom:60px;">Log in</p>
 				<div class="input-group" style="margin-bottom: 45px;">

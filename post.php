@@ -56,7 +56,10 @@ if (isset($_POST['commentButton'])) {
                     <!-- username,category,userimage,time of in the post -->
                     <div class="d-flex justify-content-between p-2 px-3">
                         <div class="d-flex flex-row align-items-center"> <img src="images/propic.jpg" width="50" class="rounded-circle">
-                            <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> <span class="font-weight-bold"><b><?php echo $rowPost['username'] ?></b></span><small class="text-primary"><?php echo $rowPost['category'] ?></small> </div>
+                            <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> 
+                            <h4 class="mt-2"><?php echo $rowPost['username'] ?></h4>
+                            <small class="text-primary"><?php echo $rowPost['category'] ?></small> 
+                        </div>
                         </div>
                         <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $rowPost['created_at'] ?></small>  </div>
                     </div>
@@ -119,10 +122,13 @@ if (isset($_POST['commentButton'])) {
                             while ($rowComment = mysqli_fetch_array($resultComment)) {
                             ?>
                                 <div class="d-flex flex-row mb-2"> <img src="images/propic.jpg" width="40" class="rounded-image">
-                                    <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> <span class="name"><?php echo $rowComment['username'] ?></span> <small class="comment-text" style="white-space: pre-line;"><?php echo $rowComment['comment'] ?></small>
+                                    <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> 
+                                    <h4><span class="name"><?php echo $rowComment['username'] ?></span></h4> 
+                                    <p class="card-text" style="white-space: pre-line;"><?php echo $rowComment['comment'] ?></p>
                                     
                                 </div>
-                                <div class="d-flex flex-row mt-1 ellipsis justify-content-end"> <small class="mr-2"><?php echo $rowComment['date'] ?></small>  </div> 
+                                <div class="d-flex flex-row mt-2 mx-3 ellipsis justify-content-end"> 
+                                    <small class="mr-2"><?php echo $rowComment['date'] ?></small>  </div> 
                                 </div>
                             <?php
 
@@ -136,7 +142,7 @@ if (isset($_POST['commentButton'])) {
                             <div class="comment-input" style="margin-top: 10px;">
                                 <div class="row">
                                     <div class="col-11">
-                                        <textarea name="commentText" class="form-control" style="height: 38px;"></textarea>
+                                        <textarea name="commentText" class="form-control" style="height: 38px;" placeholder="Comment"></textarea>
                                     </div>
                                     <div class="col-1">
                                         <button type="submit" class="btn btn-primary" name="commentButton">send</button>

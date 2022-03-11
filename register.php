@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
     <!-- Register Section -->
     <div class="container" style="width: 450px;text-align: center;margin-top:120px;margin-bottom:120px;height:670px;background-color:white;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);border-radius:5px;">
         <!-- Register Card Section -->
-        <div class="card">
+        <div class="">
             <form action="" method="POST" class="">
                 <p class="login-text" style="font-size: 2rem; font-weight: 800;margin-top:20px;margin-bottom:55px;">Register</p>
                 <div class="input-group" style="margin-bottom: 40px;">
@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
                     <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="number" placeholder="Age" name="age" value="" required>
                 </div>
                 <div class="input-group" style="margin-bottom: 40px;">
-                    <label style="margin-right: 37px;margin-left:20px;font-size:20px;font-weight:bold;">School Name:</label>
+                    <label style="margin-right: 37px;margin-left:20px;font-size:20px;font-weight:bold;">School Name</label>
                     <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="text" placeholder="School name" name="school" value="" required>
                 </div>
                 <div class="input-group" style="margin-bottom: 40px;">

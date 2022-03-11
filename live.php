@@ -31,6 +31,12 @@ if($_SESSION['user_name']=='admin')
         
     }
 }
+if($_SESSION['user_type']=='special')
+{
+    $sql = "SELECT * FROM live join user on live.user_id=user.userid ORDER BY ID DESC LIMIT 1";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result);
+}
 
 ?>
 
@@ -87,7 +93,67 @@ if($_SESSION['user_name']=='admin')
    ?>
 
 
+
+
+<!-- for the users who have donated -->
+   <?php
+    if($_SESSION['user_type']=='special')
+    {
+        ?>
+
+<div class="container mt-5 mb-5">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <!-- username,created at -->
+                    <div class="d-flex justify-content-between p-2 px-3">
+                        <div class="d-flex flex-row align-items-center"> <img src="images/propic.jpg" width="50" class="rounded-circle">
+                            <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> <span class="font-weight-bold"><b><?php echo $row['username'] ?></b></span> <small class="text-primary">zoom link</small> </div>
+                        </div>
+                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $row['created_at'] ?></small>  </div>
+                    </div>
+                    <div class="p-2">
+                        <!-- link -->
+                        <a class="text-justify" style="margin-left: 12px;white-space: pre-line;" href="<?php echo $row['link'] ?>">Click here to redirect to the live class</a>
+                        <p style="margin-left: 12px;">live class will start at: </p><p style="margin-left: 12px;"><?php echo $row['start_time'] ?></p>
+                        <hr>
+                        
+
+                        <hr>
+
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <?php
+    }
+
+   ?>
+
+   <!-- for other users -->
+   <?php
+
+    if($_SESSION['user_type']=='normal')
+    {
+        ?>
+        <div style="margin-left: 10px;margin-top:10px;margin-bottom:400px;">
+        <h5>Please donate to do the live class!</h5>
+        </div>
+        <?php
+    }
+?>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
 
 </html>
+
+<?php
+include "footer.php";
+?>

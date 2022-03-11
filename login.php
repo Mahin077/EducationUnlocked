@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['user_id'] = $row['userid'];
 		$_SESSION['user_email'] = $row['email'];
 		$_SESSION['user_name'] = $row['username'];
+		$_SESSION['user_type'] = $row['type'];
 		
 		if ($result->num_rows > 0) {
 
@@ -58,7 +59,7 @@ if (isset($_POST['submit'])) {
 					<input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="email" placeholder="Email" name="email" value="" required>
 				</div>
 				<div class="input-group" style="margin-bottom: 40px;">
-					<label style="margin-right: 82px;margin-left:20px;font-size:20px;font-weight:bold;">Password</label>
+					<label style="margin-right: 75px;margin-left:20px;font-size:20px;font-weight:bold;">Password</label>
 					<input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="password" placeholder="Password" name="password" value="" required>
 				</div>
 				<div class="input-group d-flex justify-content-center" style="margin-top: 60px;">
@@ -74,3 +75,7 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
+
+<?php
+include "footer.php";
+?>

@@ -69,3 +69,7 @@ $num = mysqli_num_rows($queryfire);
 </body>
 
 </html>
+
+<?php
+include "footer.php";
+?>

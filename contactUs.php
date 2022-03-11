@@ -131,3 +131,7 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
+
+<?php
+include "footer.php";
+?>

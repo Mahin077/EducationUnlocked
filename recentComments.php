@@ -67,3 +67,7 @@ $resultShowPost = mysqli_query($conn, $sqlShowPost);
 </body>
 
 </html>
+
+<?php
+include "footer.php";
+?>

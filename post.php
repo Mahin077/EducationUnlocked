@@ -52,7 +52,7 @@ if (isset($_POST['commentButton'])) {
     <div class="container mt-5 mb-5">
         <div class="row d-flex align-items-center justify-content-center">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card border-0 shadow rounded">
                     <!-- username,category,userimage,time of in the post -->
                     <div class="d-flex justify-content-between p-2 px-3">
                         <div class="d-flex flex-row align-items-center"> <img src="images/propic.jpg" width="50" class="rounded-circle">

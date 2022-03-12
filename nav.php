@@ -55,8 +55,9 @@ session_start();
             else{
         ?>
         <li>
-          <a href="login.php">
+          <a class="d-flex align-items-center" href="login.php">
             <i class="login navItem fa-solid fa-right-to-bracket" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Login"></i>
+            <p class="mt-3 ms-2">Login</p>
           </a>
         </li>
         <?php

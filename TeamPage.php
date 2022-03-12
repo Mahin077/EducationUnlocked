@@ -19,7 +19,6 @@ include 'nav.php';
 
 <body>
 
-    
             <div class="row" style="margin-top: 20px;">
                 <div class="col">
                     <h1>Our Team </h1>
@@ -45,7 +44,7 @@ include 'nav.php';
             <h1>
                 Our Values
             </h1>
-            <div class="container" data-text= "Students practice at their own pace, first filling in gaps in their understanding and then accelerating their learning. Through the tutorials student can learn by their own. This website will bring a revolutionary change in their life.">
+            <div class="" data-text= "Students practice at their own pace, first filling in gaps in their understanding and then accelerating their learning. Through the tutorials student can learn by their own. This website will bring a revolutionary change in their life.">
                 <div class="pic" style="padding: 1rem;">
                     <img src="	https://contentwriters.com/static/global/img/icon-people.svg" alt="" style="width: 60px; height: 60px;" >
                 </div>

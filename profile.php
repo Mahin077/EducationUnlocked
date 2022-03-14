@@ -85,32 +85,31 @@ $showPost = 0;
         </div>
 
     </form>
-
-    <div class="container" style="width: 450px;text-align: center;margin-top:170px;margin-bottom:100px;height:730px;background-color:white;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);border-radius:5px;">
+    <img class="text-center" src="./images/User_icon_2.svg.webp" style="width: 200px;margin-left:41em;">
+    <div class="container" style="width: 450px;text-align: center;margin-top:10px;margin-bottom:100px;height:730px;background-color:white;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);border-radius:5px;">
         <!-- User Profile Card Section -->
-        <div class="card">
+        
+        <div class="">
             <form action="" method="POST" class="">
                 <p class="login-text" style="font-size: 2rem; font-weight: 800;margin-top:20px;margin-bottom:55px;">User Profile </p>
                 <div class="input-group" style="margin-bottom: 30px;">
-                    <label style="margin-right: 76px;margin-left:20px;font-size:20px;font-weight:bold;">Username<b style="color: red;">*</b></label>
-                    <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="text" placeholder="Username" name="username" value="<?php echo $uname ?>" required>
+                    <label style="margin-right: 76px;font-size:20px;">Username<b style="color: red;">*</b></label>
+                    <input style="border-radius: 5px;font-size:15px;margin-left:30px;" type="text" placeholder="Username" name="username" value="<?php echo $uname ?>" required>
                 </div>
                 <div class="input-group" style="margin-bottom: 30px;">
-                    <label style="margin-right: 119px;margin-left:20px;font-size:20px;font-weight:bold;">Email<b style="color: red;">*</b></label>
-                    <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="email" placeholder="Email" name="email" value="<?php echo $eml ?>" required>
-                </div>
-
-                
+                    <label style="margin-right: 119px;font-size:20px;">Email<b style="color: red;">*</b></label>
+                    <input style="border-radius: 5px;font-size:15px;margin-left:35px;" type="email" placeholder="Email" name="email" value="<?php echo $eml ?>" required>
+                </div>                
                 <div class="input-group" style="margin-bottom: 40px;">
-                    <label style="margin-right: 144px;margin-left:20px;font-size:20px;font-weight:bold;">Age</label>
-                    <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="number" placeholder="Age" name="age" value="<?php echo $age ?>" required>
+                    <label style="margin-right: 144px;font-size:20px;">Age</label>
+                    <input style="border-radius: 5px;font-size:15px;margin-left:35px;" type="number" placeholder="Age" name="age" value="<?php echo $age ?>" required>
                 </div>
                 <div class="input-group" style="margin-bottom: 40px;">
-                    <label style="margin-right: 37px;margin-left:20px;font-size:20px;font-weight:bold;">School Name:</label>
-                    <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="text" placeholder="School name" name="school" value="<?php echo $school ?>" required>
+                    <label style="margin-right: 37px;font-size:20px;">School Name:</label>
+                    <input style="border-radius: 5px;font-size:15px;margin-left:37px;" type="text" placeholder="School name" name="school" value="<?php echo $school ?>" required>
                 </div>
                 <div class="input-group" style="margin-bottom: 40px;">
-                <label for="gender"> <label style="margin-right: 108px;margin-left:20px;font-size:20px;font-weight:bold;">Gender</label></label>
+                <label for="gender"> <label style="margin-right: 280px;font-size:20px;">Gender</label></label>
                     <select name="gen">
                         <?php 
                             if($gender=="Male")
@@ -132,16 +131,16 @@ $showPost = 0;
                     </select>
                 </div>
                 <div class="input-group" style="margin-bottom: 30px;">
-                    <label style="margin-right: 85px;margin-left:20px;font-size:20px;font-weight:bold;">user type</label>
-                    <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="text" placeholder="" name="type" value="<?php echo $type ?>" readonly>
+                    <label style="margin-right: 85px;font-size:20px;">user type</label>
+                    <input style="border-radius: 5px;font-size:15px;margin-left:40px;" type="text" placeholder="" name="type" value="<?php echo $type ?>" readonly>
                 </div>
                 <div class="input-group" style="margin-bottom: 30px;">
-                    <label style="margin-right: 5px;margin-left:20px;font-size:20px;font-weight:bold;">Current Password<b style="color: red;">*</b></label>
-                    <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="password" placeholder="Password" name="cpassword" value="" required>
+                    <label style="margin-right: 5px;font-size:20px;">Current Password<b style="color: red;">*</b></label>
+                    <input style="border-radius: 5px;font-size:15px;margin-left:19px;" type="password" placeholder="Password" name="cpassword" value="" required>
                 </div>
                 <div class="input-group" style="margin-bottom: 30px;">
-                    <label style="margin-right: 40px;margin-left:20px;font-size:20px;font-weight:bold;">New Password</label>
-                    <input style="border-radius: 5px;font-size:15px;font-weight:bold;" type="password" placeholder="New Password" name="npassword" value="">
+                    <label style="margin-right: 40px;font-size:20px;">New Password</label>
+                    <input style="border-radius: 5px;font-size:15px;margin-left:20px;" type="password" placeholder="New Password" name="npassword" value="">
                 </div>
                 <div class="input-group d-flex justify-content-center" style="margin-top: 55px;">
                     <button name="edit" class="btn btn-success btn-lg btn-block">Edit</button>

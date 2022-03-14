@@ -49,9 +49,6 @@ if (isset($_GET['catShow'])) {
     }
 }
 
-
-
-
 ?>
 
 
@@ -61,7 +58,6 @@ if (isset($_GET['catShow'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -73,7 +69,7 @@ if (isset($_GET['catShow'])) {
 <body>
 
     <!-- search option -->
-    <div class="container" style="margin-top:10px;">
+    <div class="container" style="margin-top:40px;">
         <div class="card">
             <div class="row ">
                 <form action="" method="GET">
@@ -91,7 +87,7 @@ if (isset($_GET['catShow'])) {
                     </select>
 
 
-                    <button name="submitCat" value="category" class="btn btn-light">Search</button>
+                    <button name="submitCat" value="category" class="btn btn-primary">Search</button>
 
                 </form>
             </div>
@@ -102,7 +98,7 @@ if (isset($_GET['catShow'])) {
     </div>
     <!-- create a post -->
     <div class="container" style="margin-top: 20px;">
-        <div class="card">
+        <div class="card border-0 shadow-lg rounded">
             <h5 class="card-header">Create a Post</h5>
             <div class="card-body">
                 <h5 class="card-title">Broader your knowledge by asking questions</h5>
@@ -178,13 +174,18 @@ if (isset($_GET['catShow'])) {
         <div class="container mt-5 mb-5">
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="col-md-12">
-                    <div class="card">
+                    <div class="card  border-0 shadow rounded">
                         <!-- username,category,userimage,time of in the post -->
                         <div class="d-flex justify-content-between p-2 px-3">
-                            <div class="d-flex flex-row align-items-center"> <img src="images/propic.jpg" width="50" class="rounded-circle">
-                                <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> <span class="font-weight-bold"><b><?php echo $rowPost['username'] ?></b></span><small class="text-primary"><?php echo $rowPost['category'] ?></small> </div>
+                            <div class="d-flex flex-row align-items-center"> 
+                                <img src="images/propic.jpg" width="50" class="rounded-circle">
+                                <div class="d-flex flex-column ml-2" style="margin-left: 10px;"> 
+                                <span class="font-weight-bold"><b><?php echo $rowPost['username'] ?></b></span>
+                                <small class="text-primary"><?php echo $rowPost['category'] ?></small> </div>
                             </div>
-                            <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $rowPost['created_at'] ?></small> </i> </div>
+                            <div class="d-flex flex-row mt-1 ellipsis"> 
+                                <small class="mr-2"><?php echo $rowPost['created_at'] ?></small> </i> 
+                            </div>
                         </div>
                         <div class="p-2">
                             <!-- post main text -->
@@ -215,7 +216,10 @@ if (isset($_GET['catShow'])) {
 
                                         <span style="margin-left: 5px;" id='likesCount'><?php echo $countTotalLike ?></span><span>likes</span>
                                     </div>
-                                    <div class="d-flex flex-row muted-color"> <span style="margin-right: 10px;"><?php echo $countComment ?> comments</span><span><button name="postOpen">show post</button></span> </div>
+                                    <div class="d-flex align-items-center muted-color"> 
+                                        <span style="margin-right: 10px;"><?php echo $countComment ?> comments</span>
+                                        <button class="btn btn-primary" name="postOpen">show post</button> 
+                                    </div>
                                     <input type="hidden" name="_postid" value="<?php echo $rowPost['postid'] ?>">
                                 </div>
                             </form>
@@ -254,8 +258,6 @@ if (isset($_GET['catShow'])) {
 
         });
     </script>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>

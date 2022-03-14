@@ -48,7 +48,8 @@ session_start();
           <?php
           }else{
             ?>
-            <li><a class="navItem" href="adminDonate.php">Donated</a></li>
+            
+            <li><a class="navItem" href="adminPanel.php">Admin Panel</a></li>
           <?php
           }
             }

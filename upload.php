@@ -24,12 +24,12 @@ if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
 
 			$sql = "INSERT INTO `video_details`( `name`, `video_url`, `Description`) VALUES('$Topic_name','$new_video_name','$Topic_des')";
 			mysqli_query($conn, $sql);
-			header("Location: index.php");
+			header("Location: uploadVid.php");
 		} else {
 			$em = "You can't upload files of this type";
 			header("Location: index.php?error=$em");
 		}
 	}
 } else {
-	header("Location: index.php");
+	header("Location: uploadVid.php");
 }

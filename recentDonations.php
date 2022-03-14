@@ -37,8 +37,6 @@ $resultShowPost = mysqli_query($conn, $sqlShowPost);
     <?php
     while ($rowPost = mysqli_fetch_array($resultShowPost)) {
 
-        
-
     ?>
         <div class="container mt-5 mb-5">
             <div class="row d-flex align-items-center justify-content-center">
@@ -57,10 +55,6 @@ $resultShowPost = mysqli_query($conn, $sqlShowPost);
     <?php
     }
     ?>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>

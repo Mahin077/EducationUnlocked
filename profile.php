@@ -86,7 +86,7 @@ $showPost = 0;
 
     </form>
     <img class="text-center" src="./images/User_icon_2.svg.webp" style="width: 200px;margin-left:41em;">
-    <div class="container" style="width: 450px;text-align: center;margin-top:10px;margin-bottom:100px;height:730px;background-color:white;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);border-radius:5px;">
+    <section class="container" style="width: 450px;text-align: center;margin-top:10px;margin-bottom:100px;height:730px;background-color:white;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);border-radius:5px;">
         <!-- User Profile Card Section -->
         
         <div class="">
@@ -109,7 +109,7 @@ $showPost = 0;
                     <input style="border-radius: 5px;font-size:15px;margin-left:37px;" type="text" placeholder="School name" name="school" value="<?php echo $school ?>" required>
                 </div>
                 <div class="input-group" style="margin-bottom: 40px;">
-                <label for="gender"> <label style="margin-right: 280px;font-size:20px;">Gender</label></label>
+                <label for="gender"> <label style="margin-right: 245px;font-size:20px;">Gender</label></label>
                     <select name="gen">
                         <?php 
                             if($gender=="Male")
@@ -125,9 +125,6 @@ $showPost = 0;
                                 <?php
                             }
                         ?>
-                   
-                    
-                    
                     </select>
                 </div>
                 <div class="input-group" style="margin-bottom: 30px;">
@@ -143,19 +140,17 @@ $showPost = 0;
                     <input style="border-radius: 5px;font-size:15px;margin-left:20px;" type="password" placeholder="New Password" name="npassword" value="">
                 </div>
                 <div class="input-group d-flex justify-content-center" style="margin-top: 55px;">
-                    <button name="edit" class="btn btn-success btn-lg btn-block">Edit</button>
+                    <button name="edit" class="btn btn-success btn-lg btn-block">update</button>
                 </div>
 
             </form>
         </div>
-    </div>
+    </section>
 
 
     <!-- recent activities -->
-    <div class="container">
+    <section class="container">
         <h4>See your recent activities</h4>
-    </div>
-    <div class="container">
         <div class="row">
             <div class="col-3">
                 <form action="recentPost.php" method="POST">
@@ -179,7 +174,7 @@ $showPost = 0;
             </div>
         </div>
 
-    </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>

@@ -3,16 +3,13 @@ include 'connect.php';
 include "nav.php";
 
 
-$query = "  SELECT * FROM `cards` order by id ASC";
+$query = "  SELECT * FROM `cards` order by id DESC";
 
 $queryfire = mysqli_query($conn, $query);
 
 $num = mysqli_num_rows($queryfire);
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +27,6 @@ $num = mysqli_num_rows($queryfire);
 
     <body>
         <section class="container">
-
-
             <div style="margin-top:100px ;" class="row">
                 <div>
                     <h1 class="title mb-5">All
@@ -53,7 +48,7 @@ $num = mysqli_num_rows($queryfire);
                                     <div class="card-body mt-3">
                                         <h5 class="card-title"><?php echo $products['name']; ?></h5>
                                         </p>
-                                        <button type="submit" class="btn btn-info " name="enter" style="width: 100%;color:#fff5ee">Details</button>
+                                        <button type="submit" class="btn btn-info " name="enter" style="background:linear-gradient(45deg, #7EC9F5, #3957ED); width: 100%;color:#fff5ee"><b>Details</b></button>
                                         <input type="hidden" name="p_name" value="<?php echo $products['name']; ?>">
                                     </div>
                                 </div>

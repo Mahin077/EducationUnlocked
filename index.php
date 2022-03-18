@@ -1,3 +1,6 @@
+<?php
+    include "nav.php";
+?>
 <!DOCTYPE html>
 
 <head>
@@ -20,16 +23,18 @@
     <div class="row">
         <div class="box">
             <div class="col-sm-6">
-                <div class="card">
+                <div class="card" style="margin-top: 50px; background: #f7fff8">
                     <div class="card-body">
-                        <div class="title">
+                        <div class="idx-title">
                             <h1>Education Unlocked</h1>
                         </div>
-                        <p class="card-text">Discover a limitless world of learning.
+                        <strong>
+                        <p>Discover a limitless world of learning.
                             Review important concepts and explore new topics—the options are endless with Education Unlocked! Join for free today and browse 1000+ worksheets, 
                             online classes, lesson plans and more. </p>
+                        </strong>
                         <div class="btn">
-                            <button class="button button1"><a href="allPost.php"> Get started</a></button><!--------index page link--------->
+                            <button class="button button1"><a class="posts" href="allPost.php"> Get started</a></button><!--------index page link--------->
                             
                         </div>
                     </div>
@@ -89,9 +94,6 @@
     </div>
 
 
-
-
-
     <div class="jumbotron jumbotron-fluid feature" id="feature-first">
         <div class="container my-5">
             <div class="row justify-content-between text-center text-md-left">
@@ -101,7 +103,7 @@
                         <br> to life through science experiments, engaging writing prompts, creative lecture videos, video tutorials,live classes and more.
 
                     </p>
-                    <a href="About.php" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn More</a><!----about page------->
+                    <a href="About.php" class="btn my-4 font-weight-bold atlas-cta cta-blue" style="text-decoration: none;"><h5>Learn More</h5></a><!----about page------->
                 </div>
                 <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true"
                     class="col-md-6 align-self-center">
@@ -142,3 +144,6 @@
 </body>
 
 </html>
+<?php
+    include "footer.php";
+?>

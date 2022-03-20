@@ -71,7 +71,25 @@ INSERT INTO `comment` (`commentid`, `userid`, `postid`, `comment`, `date`) VALUE
 (10, 3, 3, 'thanks', '08/02/22 01:39:29pm'),
 (11, 3, 3, 'thanks', '12/02/22 03:00:07pm');
 
--- --------------------------------------------------------
+----------------------------------------------------------
+--
+-- Table structure for table `contactus`
+--
+
+CREATE TABLE `contactus` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `messages` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contactus`
+--
+
+INSERT INTO `contactus` (`id`, `name`, `email`, `messages`) VALUES
+(1, 'Akib', 'a@gmail.com', 'Hello');
+
 
 --
 -- Table structure for table `donation`
